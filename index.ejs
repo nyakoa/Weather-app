@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body style="color: #fff">
+    <section class="vh-100">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-11 col-lg-9 col-xl-7">
+            <div class="card bg-dark text-white" style="border-radius: 40px">
+              <div class="bg-image" style="border-radius: 35px">
+                <img
+                  src="/images/Tranquil.jpeg"
+                  class="card-img"
+                  alt="weather"
+                />
+                <div
+                  class="mask"
+                  style="background-color: rgba(190, 216, 232, 0.5)"
+                ></div>
+              </div>
+              <div class="card-img-overlay text-dark p-5">
+                <form action="/weather" method="post">
+                  <input
+                    type="search"
+                    name="city"
+                    placeholder="Enter your city"
+                    required
+                  />
+                  <button class="mb-4 search" type="submit">Search</button>
+                </form>
+                <% if (data) { %>
+                <h4 class="mb-0"><%= data.name %></h4>
+                <p class="display-2 my-3"><%= data.main.temp %>°C</p>
+                <p class="mb-2">
+                  Feels Like: <strong><%= data.main.feels_like %> °C</strong>
+                </p>
+                <h5>
+                  <%= data.weather[0].main %> - <%= data.weather[0].description
+                  %>
+                </h5>
+                <% } %>
+                <div class="mood-btns">
+                  <button class="btn" data-mood="happy">😊 Happy</button>
+                  <button class="btn" data-mood="tired">😴 Tired</button>
+                  <button class="btn" data-mood="bored">😐 Bored</button>
+                </div>
+                <h3>Suggestion</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </body>
+</html>
